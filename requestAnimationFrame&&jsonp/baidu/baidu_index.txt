@@ -1,0 +1,27 @@
+注意点：
+1.首先将所有的页面都完成之后(包括弹窗，登录注册失败之类的提示，tab切换隐藏的内容)，才开始写js
+2.蒙层(width:100%;height:100%;)（可以定义一个出现蒙层的方法以及蒙层消失的方法），蒙层以及弹窗都绝对定位（fixed）,蒙层的层级（z-index）一般都比内容的层级高,而弹窗也会比蒙层高；
+3.弹窗(popBox)居中绝对定位(position:fixed/absolute)，如果弹窗不需要拖拽，left:50%;top:50%;margin-left:-width/2;margin-top:-height/2;
+如果弹窗能拖拽 left:(document.documentElement.clientWidth- popBox.offsetWidth)/2;top:(document.documentElement.clientHeight - popBox.offsetHeight)/2;
+4.tab切换的时候，页面的html,css都写出来，只需要隐藏掉（display:none）开始不需要的部分
+5.如果display:none 的元素，获取不到该元素的offsetWidth,offsetHeight;
+6.如果是a链接，href属性设置成javascript:void(0);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

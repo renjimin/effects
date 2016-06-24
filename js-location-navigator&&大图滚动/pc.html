@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>这是PC端入口</title>
+	</head>
+	<body>
+		<h1>这是PC端入口</h1>
+		<script type="text/javascript">
+			var ua = window.navigator.userAgent.toLowerCase();
+			if(ua.indexOf("mobile") > 0){
+				setTimeout(function() {
+					location.href = "mobile.html";
+				},3000)
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin:0;
+				padding: 0;
+				list-style: none;
+			}
+			.topbar {
+				/*border-right:1px solid #ccc;*/
+				/*display: inline-block;
+				*display: inline;*/
+				
+				
+			}
+			ul {
+				margin-left: 20px;
+			}
+			.topbar li:first-child {
+				border-left:1px solid #ccc;
+			}
+			.topbar li {
+				float: left;
+				width:100px;
+				list-style: none;
+				border:1px solid #ccc;
+				border-left:none;
+				text-align: center;
+				background-color: #F9F9F9;
+			}
+			.topbar li.active {
+				background-color: #fff;
+				border-top:2px solid red;
+				border-bottom:none;
+			}
+			.topbar li.active a {
+				font-weight: bold;
+			}
+			.topbar li a {
+				text-decoration: none;
+				display: block;
+				height: 32px;
+				line-height: 32px;
+				font-size: 14px;
+				color:#666;
+			}
+			.clearfix {
+				*zoom:1;
+			}
+			.clearfix:after {
+				content:"";
+				clear:both;
+				display: block;
+				font-size: 0;
+				height:0;
+				visibility: hidden;
+			}
+			.content-box {
+				width:504px;
+				height:120px;
+				border:1px solid #ccc;
+				border-top:none;
+			}
+			.content-box li.active {
+				display: block;
+			}
+			.content-box li {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="topbar clearfix">
+			<li class="active"><a href="###">话费</a></li>
+			<li><a href="###">机票</a></li>
+			<li><a href="###">电影票</a></li>
+			<li><a href="###">游戏</a></li>
+			<li><a href="###">汽车</a></li>
+		</ul>
+		
+		<ul class="content-box">
+			<li class="active">
+				a
+			</li>
+			<li>
+				b
+			</li>
+			<li>
+				c
+			</li>
+			<li>
+				d
+			</li>
+			<li>
+				e
+			</li>
+		</ul>
+		<script src="jquery-1.11.3.js" ></script>
+		<script>
+			$(".topbar li").on("mouseenter",function() {
+				var _index = $(this).index();
+				$(this).addClass("active").siblings().removeClass("active");
+				$(".content-box li").eq(_index).addClass("active").siblings().removeClass("active");
+			})
+		</script>
+	</body>
+</html>
+
+
+
+
+
+

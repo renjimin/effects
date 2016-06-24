@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bezier</title>
+	<style type="text/css">
+		*
+		{
+			margin:0;
+			padding: 0;
+		}
+		#div1
+		{
+			width: 50px;
+			height: 50px;
+			position: absolute;
+
+			background-color: red;
+		}
+	</style>
+
+	<script type="text/javascript">
+	window.onload=function()
+	{
+		var oDiv = document.getElementById("div1");
+		var position =[{left:169,top:121},{left:221,top:310},{left:419,top:342},{left:700,top:314}];
+		var position1 = [{left:96,top:242},{left:686,top:400},{left:33,top:552},{left:722,top:195}];
+		
+		function runBezier(oDiv,position,position1)
+		{
+			var t = 0;
+			oDiv.style.left = position[0].left + "px";
+			oDiv.style.top = position[0].top + "px";
+			var left = oDiv.offsetLeft;
+			var top = oDiv.offsetTop;
+			oDiv.timer = setInterval(function(){
+
+					t +=0.004;
+					if (t>=1) {
+						clearInterval(oDiv.timer);
+						if (position1) {
+							runBezier(oDiv,position1);
+						};
+					};
+				oDiv.style.left =  (1-t)*(1-t)*(1-t)*position[0].left+3*t*(1-t)*(1-t)*position[1].left +3*t*t*(1-t)*position[2].left + t*t*t*position[3].left + "px";
+				oDiv.style.top =  (1-t)*(1-t)*(1-t)*position[0].top+3*t*(1-t)*(1-t)*position[1].top +3*t*t*(1-t)*position[2].top + t*t*t*position[3].top + "px";
+			},10);					
+		}
+
+		runBezier(oDiv,position,position1);
+	}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+</body>
+</html>

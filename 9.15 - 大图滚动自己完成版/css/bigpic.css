@@ -1,0 +1,81 @@
+* {
+	margin: 0;
+	padding: 0;	
+}
+#wrap {
+	position: relative;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+	width: 510px;
+	margin: 0 auto;
+}
+#inner {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 9999px;
+	/*overflow: hidden;*/
+}
+#inner img {
+	float: left;
+	width: 510px;
+	height: 286px;
+	-webkit-user-select: none;
+}
+.pagination {
+	position: absolute;
+	left: 0;
+	bottom: 10px;
+	width: 100%;
+	text-align: center;
+}
+.pagination span{
+	display: inline-block;
+	width: 20px;
+	line-height: 20px;
+	border-radius: 10px;
+	text-align: center;
+	background-color: #fff;
+	-webkit-user-select: none;
+	cursor:pointer;
+}
+.pagination .active{
+	background-color: red;
+	color: #fff;
+}
+#wrap a{
+	font-family: "宋体";
+	text-decoration: none;
+	color: #ffffff;
+	background-color: rgba(0,0,0,.5);
+}
+.leftbut{
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 100%;	
+	line-height: 286px;
+	text-align: center;
+	-webkit-user-select: none;
+	font-size: 40px;
+	transition: all 1s;
+}
+.rightbut {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 40px;
+	height: 100%;
+	line-height: 286px;
+	text-align: center;
+	-moz-user-select: none;
+	font-size: 40px;
+	transition: all 1s;
+}
+#wrap:hover .rightbut,#wrap:hover .leftbut{
+	opacity: 1;
+}

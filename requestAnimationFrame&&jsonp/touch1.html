@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title>touch</title>
+		<style>
+			#block {
+				width:150px;
+				height: 150px;
+				background-color: blue;
+				position:absolute;
+				left:50px;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="block"></div>
+		
+		<script type="text/javascript">
+//			document.addEventListener("touchstart",function(e){
+//				console.log(e);
+//			},false)
+//			
+//			document.addEventListener("touchend",function(e){
+//				console.log(e);
+//			},false)
+
+			var block = document.getElementById("block");
+			var startPoint;
+			document.addEventListener("touchstart",function(e){
+				startPoint = e.touches[0];
+				e.stopPropagation();
+			},false)
+			
+			document.addEventListener("touchend",function(e) {
+					var endPoint = e.changedTouches[0];
+					//判断水平方向，如果超过一定量，触发事件
+					var delta = 50;
+					if(endPoint.clientX - startPoint.clientX > delta) {
+						alert("right");
+					}else if(endPoint.clientX - startPoint.clientX < -delta) {
+						alert("left");
+					}
+					if(endPoint.clientY - startPoint.clientY > delta) {
+						alert("down");
+						window.location.href = "http://www.baidu.com/";
+					}else if (endPoint.clientY - startPoint.clientY < -delta){
+						alert("up");
+					}
+					e.stopPropagation();
+				},false)
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin:0;
+				padding: 0;
+				list-style: none;
+			}
+			ul {
+				border:1px solid black;
+				display: inline-block;
+				width:150px;
+				text-align: center;
+				*display: inline;
+				background-color: #ccc;
+				transition: all 2s linear;
+			}
+			ul a {
+				display: block;
+			}
+			ul a:hover {
+				color:red;
+			}
+			ul li {
+				/*height: 24px;*/
+				line-height: 24px;
+			}
+			.list-hidden {
+				display: none;
+			}
+			ul:hover {
+				background-color: #fff;
+			}
+			ul:hover .list-hidden{
+				display: block;
+			}
+			ul:hover .arrow {
+				top:2px;
+			}
+			ul:hover span {
+				position: relative;
+				top:-11px;
+			}
+			.arrow {
+				font-style: normal;
+				display: inline-block;
+				top: -2px;
+				width:18px;
+				text-align: center;
+				height:11px;
+				position: relative;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>客户服务 <i class="arrow"><span>◇</span></i></li>
+			<li class="list-hidden">
+				<p><a href="###">帮助中心</a></p>
+				<p><a href="###">帮助中心</a></p>
+				<p><a href="###">帮助中心</a></p>
+				<p><a href="###">帮助中心</a></p>
+			</li>
+		</ul>
+		<script src="jquery-1.11.3.js" ></script>
+	</body>
+</html>

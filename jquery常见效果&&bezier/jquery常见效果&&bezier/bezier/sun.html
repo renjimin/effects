@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sun</title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		html,body
+		{
+			width: 100%;
+			height: 100%;
+			position: relative;
+			background-color: black;
+		}
+		
+		#sun
+		{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			/*border: 1px white solid;*/
+
+		}
+		#sun-pic
+		{
+			position: absolute;
+			left:50%;
+			top:50%;
+			margin-top: -100px;
+			margin-left: -100px;
+		}
+		#venus
+		{
+			position: absolute;
+			left:48%;
+			top:45%;
+		}
+		#earth
+		{
+			position: absolute;
+			left:50%;
+			top:50%;
+			margin-top: -40px;
+			margin-left: -40px;
+		}
+		#moon
+		{
+			position: absolute;
+			left:30%;
+			top:30%;
+		}
+
+	</style>
+
+	<script type="text/javascript">
+	window.onload = function()
+	{
+		var oSun = document.getElementById("sun");
+		var oVenus = document.getElementById("venus");
+		var oEarth = document.getElementById("earth");
+		var oMoon = document.getElementById("moon");
+		var oSumPic = document.getElementById("sun-pic");
+
+		var venusX = oVenus.offsetLeft;
+		var venusY = oVenus.offsetTop;
+
+		var start = oEarth.offsetLeft;
+		var startY = oEarth.offsetTop;
+
+		var moonX = oMoon.offsetLeft;
+		var moonY = oMoon.offsetTop;
+
+		var deg = 0;
+		var timer = setInterval(function()
+		{
+			deg++;
+			var pi = deg*Math.PI/180;	
+
+			// oSumPic.style.webkitTransform = "rotate("+deg/10+"deg)";
+			oVenus.style.left = venusX + 130*Math.cos(pi/8) + "px";
+			oVenus.style.top = venusY + 150*Math.sin(pi/8) + "px";	
+			oEarth.style.left = start+300*Math.cos(pi/10) + "px";
+			oEarth.style.top = startY + 250*Math.sin(pi/10) +"px"
+			oMoon.style.left = moonX + 50*Math.cos(pi) + "px";
+			oMoon.style.top = moonY + 60*Math.sin(pi) + "px";
+		},10)
+	}
+	</script>
+</head>
+<body>
+	<div id="sun">
+		<img id="sun-pic" src="img/sun.png" alt="" width="200px" height="200px">
+		<div id="venus">
+			<img src="img/venus.jpg" alt=""  width="40px" height="40px">
+		</div>
+		<div id="earth">
+			<img src="img/earth.jpg" alt="" width="60px" height="60px">
+			<div id="moon">
+			<img  id="moon" src="img/moon.png" alt="" width="30px" height="30px">
+			</div>
+		</div>	
+	</div>
+</body>
+</html>

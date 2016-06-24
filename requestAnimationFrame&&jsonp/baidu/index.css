@@ -1,0 +1,474 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+body {
+	font: 12px/1.5 helvetica, arial;
+}
+.clearfix {
+	*zoom:1;
+}
+.clearfix:after {
+	display: block;
+	clear: both;
+	content: "";
+	height: 0;
+	font-size: 0;
+	visibility: hidden;
+}
+a{
+	color: #333;
+	text-decoration: none;
+}
+a:hover {
+	color: #00c;
+}
+ul {
+	list-style: none;
+}
+.top-nav {
+	text-align: right;
+	padding-top: 19px;
+	margin-bottom: 12px;
+	font-size: 13px;
+	position: relative;
+}
+.top-nav a.top-link {
+	margin-left: 18px;
+}
+.more-pro {
+	display: inline-block;
+	width: 86px;
+	height: 24px;
+	line-height: 24px;
+	color: #fff;
+	text-align: center;
+	margin-left: 4px;
+	*margin-left: 10px;
+	_margin-right: 8px;
+}
+.more-pro .more-tips {
+	background-color: #38f;
+	display: inline-block;
+	padding: 0 4px;
+	_margin-left: 12px;
+}
+.more-pro div {
+	display: none;
+	position: fixed;
+	_position: absolute;
+	height: 100%;
+	right: -1px;
+	top: 0;
+	width: 85px;
+	color: #ccc;
+	text-align: center;
+	background-color: #f9f9f9;
+}
+.more-pro:hover div {
+	display: block;
+}
+.more-pro ul li {
+	border-bottom: 1px solid #f0f0f0;
+	margin: 0 6px;
+}
+.more-pro ul li.i-9 {
+	border-bottom: none;
+}
+.more-pro ul li.i-9 a {
+	text-decoration: underline;
+}
+.more-pro ul li.i-1 {
+	height: 24px;
+	line-height: 24px;
+	color: #333;
+	padding-top: 18px;
+	padding-bottom: 6px;
+}
+.more-pro div {
+	border-left: 1px solid #e7e7e7;
+}
+.more-pro li a {
+	display: inline-block;
+	padding: 8px 0;
+	color: #333;
+	text-decoration: none;
+}
+.more-pro li a:hover {
+	text-decoration: underline;
+}
+.more-pro li a i {
+	display: block;
+	background: url(https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/home/img/logos/bdbri_icons_737be4e5.png) no-repeat;
+	width: 36px;
+	height: 36px;
+	margin: 0 auto;
+}
+.more-pro .i-2 i {
+	background-position: 0 0;
+}
+.more-pro .i-3 i {
+	background-position: -36px 0;
+}
+.more-pro .i-4 i {
+	background-position: -72px 0;
+}
+.more-pro .i-5 i {
+	background-position: -112px 0;
+}
+.more-pro .i-6 i {
+	background-position: -144px 0;
+}
+.more-pro .i-7 i {
+	background-position: -180px 0;
+}
+.more-pro .i-8 i {
+	background-position: -220px 0;
+}
+.set-button {
+	position: relative;
+	display: inline-block;
+	*vertical-align: middle;
+	*padding-top: 4px;
+	height: 24px;
+	margin-left: 16px;
+}
+.set-button:hover .wrap-setting {
+	display: block;
+}
+.set-button .wrap-setting {
+	display: none;
+	position: absolute;
+	text-align: center;
+	width: 72px;
+	left: -24px;
+	top: 24px;
+	*top: 30px;
+	border: 1px solid #d1d1d1;
+	box-shadow: 1px 1px 5px #d1d1d1;
+}
+.wrap-setting div {
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+	display: block;
+	position: absolute;
+	top: -10px;
+	left: 50%;
+	margin-left: -5px;
+}
+.wrap-setting div em,
+.wrap-setting div i {
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+	display: block;
+	position: absolute;
+	border: 5px solid transparent;
+	border-style: dashed dashed solid dashed;
+}
+.wrap-setting div em {
+	border-bottom-color: #d8d8d8;
+	top: -1px;
+}
+.wrap-setting div i {
+	border-bottom-color: #fff;
+	top: 0;
+}
+.set-button ul li {
+	height: 26px;
+	line-height: 26px;
+}
+.set-button ul a {
+	display: block;
+	height: 26px;
+	line-height: 26px;
+	text-decoration: none;
+}
+.set-button ul a:hover {
+	text-decoration: none;
+	background-color: #38f;
+	color: #fff;
+}
+.main {
+	text-align: center;
+}
+.main form {
+	margin-top: 22px;
+}
+.main input {
+	border: 0;
+	border: none;
+	outline: 0;
+	-webkit-appearance: none;
+	vertical-align: middle;
+}
+.main .input-text {
+	width: 520px;
+	font-size: 16px;
+	padding: 0 7px;
+	height: 34px;
+	line-height: 34px;
+	border: 1px solid #b6b6b6;
+	border-right: none;
+}
+.main .input-text:hover {
+	border-color: #999;
+}
+.main .input-text:focus {
+	border-color: #4791ff;
+}
+.submit-button {
+	background-color: #3385ff;
+	width: 100px;
+	height: 36px;
+	color: white;
+	font-size: 15px;
+	letter-spacing: 1px;
+	cursor: pointer;
+	border-bottom: 1px solid #2d78f4;
+}
+.submit-button:hover {
+	background-color: #317ef3;
+	box-shadow: 1px 1px 1px #ccc;
+}
+.footer {
+	margin-top: 224px;
+	text-align: center;
+}
+.footer .fl a {
+	color: #00c;
+	margin: 0 10px;
+}
+.fb a,
+.fb span {
+	color: #666;
+}
+.fb a:hover {
+	color: #666;
+}
+.fb .icon-lo {
+	width: 14px;
+	height: 17px;
+	display: inline-block;
+	overflow: hidden;
+	background: url(https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/global/img/icons_f0338722.png) no-repeat;
+	background-position: -600px -96px;
+	position: relative;
+	top: 3px;
+}
+#loginBox {
+	z-index: 101;
+	display: none;
+	position: fixed;
+	background-color: #fff;
+	left:0;
+	top:0;
+	width:392px;
+	height: 448px;
+	-webkit-user-select:none;
+}
+#loginBox form {
+	width:350px;
+	margin:0 auto;
+	padding-bottom: 24px;
+}
+#loginBox h2 {
+	height: 46px;
+	padding-left: 40px;
+	line-height: 46px;
+	font-size: 16px;
+	color:#666;
+	background: #f7f7f7 url("https://ss0.bdstatic.com/5LMZfyabBhJ3otebn9fN2DJv/passApi/img/baidu_logo_24_056405eb.png") no-repeat;
+	background-position: 10px center;
+	cursor: move;
+}
+.float-right {
+	float: right;
+}
+.input-group {
+	width:350px;
+	height: 42px;
+	line-height: 42px;
+	margin-bottom: 16px;
+}
+
+.input-group input {
+	-webkit-appearance: none;
+	border:none;
+	display: block;
+	width:300px;
+	background-color: transparent;
+	outline: none;
+	height: 16px;
+	padding: 12px 10px 12px 36px;
+	border: 1px solid #ddd;
+	font-size: 14px;
+  	color: #666;
+	background: url(https://ss0.bdstatic.com/5LMZfyabBhJ3otebn9fN2DJv/passApi/img/input_icons_24_915272c4.png) no-repeat;	
+}
+.top-tips {
+	margin: 20px 0;
+}
+.top-tips a {
+	background: url(https://ss0.bdstatic.com/5LMZfyabBhJ3otebn9fN2DJv/passApi/img/smsSwitchPhone_296e835b.png) no-repeat 0 1px;
+	height: 16px;
+	line-height: 16px;
+	padding-left: 15px;
+}
+.top-tips a:hover {
+	color:#2e7fdb;
+	text-decoration: underline;
+}
+.input-group-1 input
+{
+	background-position: 6px -62px;
+}
+.input-group-1 input:focus {
+	background-position: 6px -102px;
+}
+.input-group-2 input
+{
+	background-position: 6px -140px;
+}
+.input-group-2 input:focus {
+	background-position: 6px -180px;
+}
+.input-group input:focus {
+	border-color: #488ee7;
+}
+label input,label span {
+	display: inline-block;
+	vertical-align: middle;
+}
+label span {
+	margin-left: 8px;
+}
+a.forget-btn {
+	float: right;
+	color:#2e7fdb;
+}
+a.forget-btn:hover {
+	text-decoration: underline;
+}
+a.login-btn {
+	display: block;
+	width: 100%;
+	text-decoration: none;
+	border-radius: 4px;
+	height: 48px;
+	line-height: 48px;
+	text-align: center;
+	background-color: #3f89ec;
+	font-size: 16px;
+	font-weight: bold;
+	color:#fff;
+	margin-top: 12px;
+	margin-bottom: 16px;
+	transition:all 1s;
+}
+a.register-btn {
+	float: right;
+	color:#2e7fdb;
+}
+a.register-btn:hover {
+	text-decoration: underline;
+}
+.login-btn:hover {
+	background-color: #4490f7;
+}
+#mask {
+	display: none;
+	position: fixed;
+	width:100%;
+	height: 100%;
+	left:0;
+	top:0;
+	z-index: 100;
+	background-color: rgba(0,0,0,0.8);
+}
+#closePop {
+	text-decoration: none;
+	color:#666;
+	background:url(https://ss0.bdstatic.com/5LMZfyabBhJ3otebn9fN2DJv/passApi/img/pass_login_icons_retina_bd1d5228.png) no-repeat;
+	background-position: -7px -7px;
+	position: absolute;
+	top:12px;
+	right:24px;
+	height: 16px;
+	width: 16px;
+}
+#closePop:hover {
+	background-position: -7px -39px;
+}
+#login-bottom {
+	border-top:1px solid #d9d9d9;
+	padding-left: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+#login-bottom p {
+	margin-bottom: 12px;
+}
+#login-bottom a {
+	display: inline-block;
+	width:24px;
+	height: 24px;
+	margin-right: 12px;
+	background: url(https://ss0.bdstatic.com/5LMZfyabBhJ3otebn9fN2DJv/passApi/img/pass_login_icons_a42ddced.png) no-repeat;
+
+}
+#login-bottom a.qq-btn
+{
+	background-position: -88px 0;
+}
+#login-bottom a.sina-btn
+{
+	background-position: -64px 0;
+}
+#tabBtn {
+	position: absolute;
+	right:0;
+	bottom:0;
+	width:44px;
+	height: 44px;
+	background-image: url(https://ss0.bdstatic.com/5LMZfyabBhJ3otebn9fN2DJv/passApi/img/pass_login_icons_a42ddced.png);
+	background-position: -44px -86px;
+}
+#tabBtn.moblie-btn {
+	background-position: 0 -86px;
+}
+#mobilePart {
+	display: none;
+	text-align: center;
+}
+#pcPart {
+	/*display: none;*/
+}
+#mobilePart img
+{
+	padding: 5px;
+	border: 1px solid #ccc;
+	width: 123px;
+	height: 123px;
+}
+.m-title {
+	font-size: 16px;
+	text-align: center;
+	line-height: 36px;
+	margin-bottom: 15px;
+	padding-top: 40px;
+	padding-left: 0;
+	font-weight: bold;
+}
+#mobilePart .tips {
+	margin-top: 12px;
+	font-size: 12px;
+}
+
+
+
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#block {
+				width: 150px;
+				height: 150px;
+				background-color: blue;
+				position: absolute;
+				left: 50px;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>requestAnimationFrame</h1>
+		<div id="block"></div>
+		<script>
+			var block = document.getElementById("block");
+			var deltaX = 2;
+			var deltaY= 3;
+			var oLeft = block.offsetLeft;
+			var oTop = block.offsetTop;
+			
+			function move() {
+				oLeft += deltaX;
+				oTop += deltaY;
+				if(oLeft < 0 || oLeft > document.documentElement.clientWidth - block.offsetWidth) {
+					deltaX *= -1;
+				}
+				if(oTop < 0 || oTop > document.documentElement.clientHeight - block.offsetHeight) {
+					deltaY *= -1;
+				}
+				block.style.left = oLeft + "px";
+				block.style.top = oTop + "px";
+				window.requestAnimationFrame(move);
+			}
+			
+			window.requestAnimationFrame(move);
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+

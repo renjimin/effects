@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#wrap {
+				border:1px solid red;
+				width:400px;
+				height: 300px;
+				position: relative;
+			}
+			#block {
+				position:absolute;
+				left:0;
+				top:0;
+				width:50px;
+				height: 50px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="block"></div>
+		</div>
+		<script type="text/javascript">
+			var wrap = document.getElementById("wrap");
+			var block = document.getElementById("block");
+			var timer = null;
+			var oLeft = block.offsetLeft;
+			var oTop = block.offsetTop;
+			
+			var maxHeight = wrap.offsetHeight - block.offsetHeight;
+			var maxWidth = wrap.offsetWidth - block.offsetWidth;
+			
+			var dX = 1;
+			var dY = 2;
+			timer = setInterval(function() {		
+				if(oTop > maxHeight || oTop < 0) {					
+					dY *=-1;				
+				}
+				if(oLeft > maxWidth || oLeft < 0) {					
+					dX *=-1;				
+				}
+				oLeft +=dX;
+				oTop +=dY;
+				block.style.left = oLeft + "px";
+				block.style.top = oTop + "px";
+			},30)
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

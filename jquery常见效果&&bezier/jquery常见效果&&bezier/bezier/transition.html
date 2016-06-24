@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<!--参考网站 http://cubic-bezier.com/ -->
+	<title>transition</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding:0;
+		}
+		#wrap
+		{
+			width: 80%;
+			margin: 0 auto;
+			margin-top: 200px;
+			position: relative;
+			border: 1px solid red;
+		}
+		#canvas
+		{
+			border:1px solid gray;
+		}
+		#inner{
+			position: absolute;
+			left: 0;
+			top:0;
+		}
+		.controlPoint
+		{
+			width: 30px;
+			height: 30px;
+			position: absolute;
+			border-radius: 15px;
+			border:1px solid #ccc;
+		}
+		.one{
+			top:530px;
+			left:35px;
+			background-color: #eee;
+		}
+		.two{
+			top:285px;
+			left:135px;
+			background-color: pink;
+		}
+		.three{
+			top:285px;
+			left:435px;
+			background-color: skyblue;
+		}
+		.four{
+			left:530px;
+			top:35px;
+			background-color: #eee;
+		}
+	</style>
+
+	<script type="text/javascript">
+	function byClass(parent,sclass)
+	{
+		var oWrap = parent.getElementsByTagName("*");
+		var arr=[];
+		var re = new RegExp("\\b"+sclass+"\\b(?!-)");
+
+		for (var i = 0; i < oWrap.length; i++) {
+			if (re.test(oWrap[i].className)) {
+				arr.push(oWrap[i]);
+			};
+
+		};
+
+		
+		return arr;
+	}
+	window.onload = function()
+	{
+		var owrap = document.getElementById("wrap");
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		var cWidth = canvas.width;
+		var cHeight = canvas.height;
+
+
+		var aCtrlPoint  = byClass(document,"controlPoint");
+		var ctrlOneLeft= aCtrlPoint[0].offsetLeft+aCtrlPoint[0].offsetWidth/2;
+		var ctrlOneTop = aCtrlPoint[0].offsetTop+ aCtrlPoint[0].offsetHeight/2;
+		var ctrlTwoLeft = aCtrlPoint[1].offsetLeft + aCtrlPoint[1].offsetWidth/2;
+		var ctrlTwoTop = aCtrlPoint[1].offsetTop + aCtrlPoint[1].offsetHeight/2;
+		var ctrlThreeLeft = aCtrlPoint[2].offsetLeft + aCtrlPoint[2].offsetWidth/2;
+		var ctrlThreeTop = aCtrlPoint[2].offsetTop + aCtrlPoint[2].offsetHeight/2;
+		var ctrlFourLeft = aCtrlPoint[3].offsetLeft + aCtrlPoint[3].offsetWidth/2;
+		var ctrlFourTop = aCtrlPoint[3].offsetTop + aCtrlPoint[3].offsetHeight/2;
+		// ,ctrlOneTop,ctrlTwoLeft,ctrlTwoTop,ctrlThreeLeft,ctrlThreeTop,ctrlFourLeft,ctrlFoutTop;
+
+
+		// aCtrlPoint[2].onclick = aCtrlPoint[3].onclick = function()
+		// {
+		// 	alert("hdh")
+		// }
+
+		ctx.save();
+		ctx.strokeStyle = "#ccc";
+
+
+		for(var i=50; i<=550; i+=50){
+			ctx.beginPath();
+			ctx.moveTo(i,50);
+			ctx.lineTo(i,550);
+			ctx.stroke();	
+		}
+		for(var i=50; i<=550; i+=50){
+			ctx.beginPath();
+			ctx.moveTo(50,i);
+			ctx.lineTo(550,i);
+			ctx.stroke();	
+		}
+
+		ctx.restore();
+
+		ctx.save()
+		ctx.strokeStyle="#ccc";
+		ctx.lineWidth=5;
+		ctx.beginPath();
+		ctx.moveTo(ctrlOneLeft,ctrlOneTop);
+		ctx.lineTo(ctrlTwoLeft,ctrlTwoTop);
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(ctrlFourLeft,ctrlFourTop);
+		ctx.lineTo(ctrlThreeLeft,ctrlThreeTop);
+		ctx.stroke();
+
+		ctx.restore();
+
+		ctx.save();
+		ctx.beginPath();
+		ctx.moveTo(ctrlOneLeft,ctrlOneTop);
+		ctx.bezierCurveTo(ctrlTwoLeft,ctrlTwoTop,ctrlThreeLeft,ctrlThreeTop,ctrlFourLeft,ctrlFourTop)
+		ctx.stroke();
+		ctx.restore();
+
+		for(var i = 1; i<3;i++)
+		{
+			aCtrlPoint[i].index=i;
+			aCtrlPoint[i].onmousedown=function(e)
+			{
+
+				var e = window.event||e;
+				var disX = e.clientX - this.offsetLeft;
+				var disY = e.clientY - this.offsetTop;
+				var _this = this;
+
+				document.onmousemove=function(e)
+				{
+					var e = window.event||e;
+					aCtrlPoint[_this.index].style.left = e.clientX - disX + "px";
+					aCtrlPoint[_this.index].style.top = e.clientY - disY + "px";
+					document.title = aCtrlPoint[_this.index].offsetTop;
+					if (aCtrlPoint[_this.index].offsetLeft+aCtrlPoint[_this.index].offsetWidth/2>=550) {
+						aCtrlPoint[_this.index].style.left=535 + "px";
+					}
+					if(aCtrlPoint[_this.index].offsetLeft+aCtrlPoint[_this.index].offsetWidth/2<=50)
+					{
+						aCtrlPoint[_this.index].style.left=35 + "px";
+					}
+
+					if(aCtrlPoint[_this.index].offsetTop+aCtrlPoint[_this.index].offsetHeight/2<=-100)
+					{
+						aCtrlPoint[_this.index].style.top=-100 + "px";
+					}
+					if(aCtrlPoint[_this.index].offsetTop+aCtrlPoint[_this.index].offsetHeight/2>=800)
+					{
+						aCtrlPoint[_this.index].style.top=800 + "px";
+					}
+					
+						ctx.save();
+
+						ctx.clearRect(0,0,560,800)
+						ctx.strokeStyle="#ccc";
+						ctx.lineWidth=5;
+						ctx.beginPath();
+						ctx.moveTo(ctrlOneLeft,ctrlOneTop);
+						
+						ctx.lineTo(aCtrlPoint[1].offsetLeft+aCtrlPoint[1].offsetWidth/2,aCtrlPoint[1].offsetTop+aCtrlPoint[1].offsetHeight/2);
+						ctx.stroke();
+						ctx.restore()
+				
+						ctx.save()
+						// ctx.clearRect(aCtrlPoint[_this.index].offsetLeft,0,aCtrlPoint[_this.index].offsetLeft,aCtrlPoint[_this.index].offsetTop)
+						ctx.strokeStyle="#ccc";
+						ctx.lineWidth=5;
+						ctx.beginPath();
+						ctx.moveTo(ctrlFourLeft,ctrlFourTop);
+						ctx.lineTo(aCtrlPoint[2].offsetLeft+aCtrlPoint[2].offsetWidth/2,aCtrlPoint[2].offsetTop+aCtrlPoint[2].offsetHeight/2);
+						ctx.stroke();
+
+						ctx.restore();
+
+						
+					
+					
+
+					ctx.save();
+					ctx.strokeStyle = "#ccc";
+
+
+					for(var i=50; i<=550; i+=50){
+						ctx.beginPath();
+						ctx.moveTo(i,50);
+						ctx.lineTo(i,550);
+						ctx.stroke();	
+					}
+					for(var i=50; i<=550; i+=50){
+						ctx.beginPath();
+						ctx.moveTo(50,i);
+						ctx.lineTo(550,i);
+						ctx.stroke();	
+					}
+
+					ctx.restore();
+
+					ctx.save();
+					ctx.beginPath();
+					ctx.moveTo(ctrlOneLeft,ctrlOneTop);
+					ctx.bezierCurveTo(aCtrlPoint[1].offsetLeft,aCtrlPoint[1].offsetTop,aCtrlPoint[2].offsetLeft,aCtrlPoint[2].offsetTop,ctrlFourLeft,ctrlFourTop)
+					ctx.stroke();
+					ctx.restore();
+
+				}
+
+				return false;
+
+
+			}
+
+			document.onmouseup = function()
+			{
+				document.onmousemove = null;
+
+			}
+			
+		}
+		
+
+
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<canvas id="canvas" width="600px" height="800px"></canvas>
+		<div id="inner">
+			<div class="controlPoint one"></div>
+			<div class="controlPoint two"></div>
+			<div class="controlPoint three"></div>
+			<div class="controlPoint four"></div>
+		</div>
+	</div>
+
+</body>
+</html>

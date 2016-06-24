@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>大图滚动</title>
+	<style type="text/css">
+	#wrap {
+		position: relative;
+		width:510px;
+		margin:0 auto;
+		height: 286px;
+		overflow: hidden;
+	}
+	#wrap:hover .left-arrow,#wrap:hover .right-arrow{
+		/*display: block;*/
+		opacity: 1;
+	}
+	#inner {
+		position: relative;
+		left:0;
+		top:0;
+		width: 9999px;
+	}
+	#inner img{
+		float: left;
+		width:510px;
+		height: 286px;
+		-webkit-user-select:none;
+	}
+	.paganation {
+		position: absolute;
+		bottom:10px;
+		left:0;
+		width:100%;
+		text-align: center;
+		-webkit-user-select:none;
+	}
+	.paganation span {
+		display: inline-block;
+		width:30px;
+		height: 30px;
+		text-align: center;
+		line-height: 30px;
+		border-radius: 50%;
+		background-color: #fff;
+		cursor: pointer;
+	}
+	.paganation span.active {
+		background-color: red;
+		color:#fff;
+	}
+	a {
+		text-decoration: none;
+	}
+	.left-arrow {
+		/*display: none;*/
+		opacity: 0;
+		transition:all 1s;
+		position: absolute;
+		font-family: "宋体";
+		left:0;
+		top:0;
+		width:40px;
+		height: 100%;
+		color:#fff;
+		text-align: center;
+		font-size: 40px;
+		line-height: 286px;
+		background-color: rgba(0,0,0,.5);
+		-webkit-user-select:none;
+	}
+	.right-arrow {
+		/*display: none;*/
+		opacity: 0;
+		transition:all 1s;
+		position: absolute;
+		font-family: "宋体";
+		right:0;
+		top:0;
+		width:40px;
+		height: 100%;
+		color:#fff;
+		text-align: center;
+		font-size: 40px;
+		line-height: 286px;
+		background-color: rgba(0,0,0,.5);
+		-webkit-user-select:none;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="inner">
+			<img src="img/1.jpg" alt="">
+			<img src="img/2.jpg" alt="">
+			<img src="img/3.jpg" alt="">
+			<img src="img/4.jpg" alt="">
+			<img src="img/5.jpg" alt="">
+			<img src="img/6.jpg" alt="">
+			<img src="img/7.jpg" alt="">
+			<img src="img/8.jpg" alt="">
+		</div>
+		<div class="paganation" id="paganation">
+			<span class ="active">1</span>
+			<span>2</span>
+			<span>3</span>
+			<span>4</span>
+			<span>5</span>
+			<span>6</span>
+			<span>7</span>
+			<span>8</span>
+		</div>
+		<a class="left-arrow" href="javascript:void(0);">&lt;</a>
+		<a class="right-arrow" href="javascript:void(0);">&gt;</a>
+	</div>
+	<script type="text/javascript">
+	var wrap = document.getElementById("wrap");
+	var inner = document.getElementById("inner");
+	var leftBtn = wrap.getElementsByTagName("a")[0];
+	var rightBtn = wrap.getElementsByTagName("a")[1];
+	var imgList = inner.getElementsByTagName("img");
+	var pagnationList = document.getElementById("paganation").getElementsByTagName("span");
+
+	var perDistance = imgList[0].offsetWidth;
+	//offsetWidth 包括border以及padding
+	var index = 0;
+	var timer = null;
+	var autoTimer = null;
+	inner.innerHTML += inner.innerHTML;
+	
+	function tab() {
+		var start = inner.offsetLeft;
+		var end = - index * perDistance;
+		var change = end - start;
+		var t = 0;
+		var maxT = 30;
+		clearInterval(timer);
+		timer = setInterval(function() {
+			t++;
+			if(t >= maxT) {
+				clearInterval(timer);
+			}
+			inner.style.left = change*t/maxT + start +"px";
+			if(index >= pagnationList.length && t >= maxT) {
+				index = 0;
+				inner.style.left = "0";
+			}
+		},30)
+//		inner.style.left = - index * perDistance + "px";
+		for(var j = 0; j < pagnationList.length; j++) {
+			pagnationList[j].className = "";
+			if(index >= pagnationList.length) {
+				pagnationList[0].className = "active";
+			}else {
+				pagnationList[index].className = "active";
+			}
+			
+		}
+	}
+	function nextTab() {
+		index++;
+		tab();
+		
+	}
+	function prevTab() {
+		index--;
+		if(index < 0) {
+			inner.style.left = - pagnationList.length * perDistance + "px";
+			index = pagnationList.length - 1;
+		}
+		tab();
+	}
+	//给页面下的每一个小圆点加点击事件
+	for(var i = 0; i < pagnationList.length;i++) {
+		pagnationList[i].index = i;
+		pagnationList[i].onclick = function() {
+			index = this.index;
+			tab();
+		}
+	}
+	
+	//给下一张添加切换事件
+	rightBtn.onclick = nextTab;
+	//给上一张添加切换事件
+	leftBtn.onclick = prevTab;
+	
+	//自动走
+//	autoTimer = setInterval(nextTab,2000);
+	
+	//移动上去自动走计时器清掉
+//	wrap.onmouseover = function() {
+//		clearInterval(autoTimer);
+//	}
+//	
+//	wrap.onmouseout = function() {
+//		autoTimer = setInterval(nextTab,2000);
+//	}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

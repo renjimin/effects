@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>碰壁反弹</title>
+		<style type="text/css">
+			#wrap{
+				position: relative;
+				top: 0;
+				left: 0;
+				width: 400px;
+				height: 300px;
+				border: 1px solid #811218;
+			}
+			#block{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 50px;
+				height: 50px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="block"></div>
+		</div>
+		<script type="text/javascript">
+			var wrap = document.getElementById("wrap");
+			var block = document.getElementById("block");
+			var wrapWidth=wrap.offsetWidth;
+			var wrapHeight=wrap.offsetHeight;
+			var blockWidth = block.offsetWidth; 
+			var blockHeight = block.offsetHeight;
+			maxH=wrapHeight-blockHeight;
+			maxW=wrapWidth-blockWidth;
+			var oleft=0;
+			var otop=0;
+			var dy=1;
+			var dx=1;
+			var timer=setInterval(function(){
+				if(oleft>=maxW-2||oleft<0){//-2是减去border的宽度，左右各有一个像素
+					dx*=-1;
+				}
+				if(otop>=maxH-2||otop<0){
+					dy*=-1;
+				}
+				oleft+=dx;
+				otop+=dy;
+				block.style.left=oleft+"px";
+				block.style.top=otop+"px";
+			},20)
+		</script>
+	</body>
+</html>

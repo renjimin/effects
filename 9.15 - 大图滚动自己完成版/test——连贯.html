@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap{
+			width: 510px;
+			height: 268px;
+			margin:0 auto;
+			overflow: hidden;
+			position: relative;
+		}
+		#wrap:hover #lft,#wrap:hover #rgt{
+			opacity: 1;
+		}
+		#inner{
+			position: absolute;
+			width: 9999px;
+			overflow: hidden;
+		}
+		#inner img{
+			width: 510px;
+			height: 268px;
+			float: left;
+			-webkit-user-select:none;
+		}
+		#btn{
+			position: absolute;
+			width: 510px;
+			height:15px;
+			text-align: center;
+			left:0;
+			bottom:10px;
+			-webkit-user-select:none;
+		}
+		#btn span{
+			display: inline-block;
+			width: 15px;
+			height: 15px;
+			margin-right:5px;
+			border-radius: 15px;
+			background: #fff;
+			cursor: pointer;
+			-webkit-user-select:none;
+		}
+		#btn .choose{
+			background: #EE5E1F;
+		}
+		#lft,#rgt{
+			width: 30px;
+			height: 268px;
+			line-height: 268px;
+			background: rgba(0,0,0,0.5);
+			color: #fff;
+			text-align: center;
+			font-size: 40px;
+			font-family: "宋体";
+			position: absolute;
+			transition:all 1s;
+			opacity: 0;
+			cursor: pointer;
+			-webkit-user-select:none;
+		}
+		#lft{
+			left:0;
+		}
+		#rgt{
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="inner">
+			<img src="images/1.jpg" alt="">
+			<img src="images/2.jpg" alt="">
+			<img src="images/3.jpg" alt="">
+			<img src="images/4.jpg" alt="">
+			<img src="images/5.jpg" alt="">
+			<img src="images/6.jpg" alt="">
+			<img src="images/7.jpg" alt="">
+			<img src="images/8.jpg" alt="">
+			<img src="images/9.jpg" alt="">
+		</div>
+		<div id="btn">
+			<span class="choose"></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div id="lft">&lt;</div>
+		<div id="rgt">&gt;</div>
+	</div>
+	<script>
+		var btn=document.getElementById("btn").getElementsByTagName('span');
+		var inner=document.getElementById("inner");
+		var lft=document.getElementById('lft');
+		var rgt=document.getElementById("rgt");
+		var img=inner.getElementsByTagName("img");
+		var img_length=img.length;
+		var imgwidth=img[0].offsetWidth;
+		
+		inner.innerHTML+=img[0].outerHTML;
+		var timer=null;
+		var timer_in=null;
+		var index=0;
+		
+		for(var i=0;i<btn.length;i++){
+			btn[i].index=i;
+			btn[i].onclick=function(){
+				index=this.index;
+				move();
+			}
+		}
+		function clearAll(){
+			for(var j=0;j<btn.length;j++)
+				btn[j].className="";
+		}
+		function move(){
+			var start=inner.offsetLeft;
+			var end=-index*imgwidth;
+			var change=end-start;
+			var tag=0;
+			var target=30;
+			clearInterval(timer_in);
+			clearInterval(timer);
+			timer_in=setInterval(function(){
+				tag++;
+				if(tag==target){
+					clearInterval(timer_in);
+					timer=setInterval(autoPlay,3000);
+				}
+				inner.style.left=change/target*tag+start+"px";
+			},30);
+			clearAll();
+			if(index==img_length)
+				btn[0].className="choose";
+		 	else
+				btn[index].className="choose";
+		}
+
+		timer=setInterval(autoPlay,3000);
+		
+		function autoPlay(){
+			index++;
+			if(index>img_length){
+				index=1;
+				inner.style.left=0;
+			}
+			move();
+		 }
+
+		 lft.onclick=function(){
+		 	index--;
+		 	if(index<0){
+		 		inner.style.left=-img_length*imgwidth+"px";
+		 		index=img_length-1;
+		 	}
+		 	move();
+		 }
+		 rgt.onclick=function(){
+		 	autoPlay();
+		 }
+	</script>
+</body>
+</html>

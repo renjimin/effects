@@ -1,0 +1,25 @@
+浏览器识别
+
+IE 浏览器判断的标准是 ”MSIE“ 字段
+
+UC 浏览器的判断标准是 ”UCWEB“ 字段 和 ”UCBrowser” 字段
+
+opera 浏览器的判断标准是 “opera“ 字段
+
+搜狗浏览器的判断标准是 ”SE“ 、 ”MetaSr“ 字段
+
+搜狗手机浏览器的判断标准是 ” SogouMobileBrowser" 字段
+
+chrome 浏览器的判断标准是 “ chrome “ 字段
+
+Safari 浏览器的判断标准是 “ safari “ 字段
+
+Firefox 的判断标准是 “ Firefox “ 字段
+
+QQ 浏览器 包含 ”TencentTraveler“ 或者 ”QQBrowser“ 字段
+
+360 浏览器的判断标准是 ”360SE” 字段
+
+Theworld 浏览器的判断标准是 ”The world“ 字段
+
+遨游浏览器的判断标准是 ”Maxthon“ 字段
