@@ -91,6 +91,8 @@ body header nav select {
 
 .content .article div {
 	display: inline-block;
+	*zoom:1;
+	*display:inline;
 	vertical-align: top;
 	white-space: normal;
 	min-width: 100px;
