@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GDU Life</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            list-style: none;
+        }
+        .banner,
+        .banner-picture{
+            position:relative;
+            overflow:hidden;
+            width:100%;
+            height:540px;
+        }
+        .banner-picture a{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .banner-picture a:not(:first-child){
+            display: none;
+        }
+        .banner-picture a img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .audit_pic,
+        .audit_pic img{
+            width:100%;height:540px;position:absolute;
+        }
+        .banner-index {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            width:102px;
+            height: 8px;
+            margin-left:-61px;
+        }
+        .banner-index li{
+            float:left;
+            width:22px;
+            height: 8px;
+            border-radius:8px;
+            margin-right:12px;
+            background: #fff;
+        }
+        .banner-index .active{
+            background: #1ab192;
+        }
+        .banner-index li:hover{
+            background: #1ab192;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+ <div class="banner">
+        <div class="banner-picture">
+            <a href="http://pcmall.linshimuye.com/auditpage/informationList.html"><img src="http://ohdqe117o.bkt.clouddn.com/gdulife/banner1.jpg"" /></a>
+            <a href="http://pcmall.linshimuye.com/auditpage/flow.html"><img src="http://ohdqe117o.bkt.clouddn.com/gdulife/banner2.jpg"/></a>
+            <a href="http://pcmall.linshimuye.com/auditpage/auditProviderMeeting.html"><img src="http://ohdqe117o.bkt.clouddn.com/gdulife/banner3.jpg"/></a>
+        </div>
+        <ul class="banner-index">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+<script src="http://cdn.bootcss.com/jquery/3.2.0/jquery.js"></script>
+<script>
+    $(function(){
+        var index = 0,   //当前索引，值为0,1,2
+            timer = null,   //定时器
+            autoBtn = $(".banner-index li"),   // 获取轮播图的点击按钮
+            length = autoBtn.length;
+        function autoPlayBanner(){
+            index = index >= (length - 1) ? 0 : ++index;
+            $(".banner-index li").eq(index).trigger("click");           
+        }
+        autoBtn.on('click',function(e){
+            index =  $(this).index();
+            if(!$(this).hasClass("active")){
+                $('.banner-picture a').filter(":visible").fadeOut(500).parent().children("a").eq(index).fadeIn(500);
+                $(this).addClass('active').siblings().removeClass('active');
+            }
+        });
+        timer = setInterval( autoPlayBanner, 4000);
+        $(".banner-picture a, .banner-index").hover(function(){
+            clearInterval(timer);
+        }, function(){
+            timer = setInterval( autoPlayBanner, 4000);
+        });   
+    })
+</script>
+</body>
+</html>
